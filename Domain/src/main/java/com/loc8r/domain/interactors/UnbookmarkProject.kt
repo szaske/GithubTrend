@@ -16,7 +16,7 @@ class UnbookmarkProject @Inject constructor(
         postExecutionThread: PostExecutionThread)
     : CompletableUseCaseBase<UnbookmarkProject.Params>(postExecutionThread) {
 
-    override fun buildUseCaseCompletable(params: Params?): Completable {
+    public override fun buildUseCaseCompletable(params: Params?): Completable {
 
         // We need to check if params are null, because bookmarking a
         // project requires a project ID
