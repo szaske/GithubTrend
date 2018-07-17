@@ -1,4 +1,4 @@
-package com.loc8r.domain.model
+package com.loc8r.domain.models
 
 class Project(
         val id: String,

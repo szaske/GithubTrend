@@ -9,7 +9,7 @@
 
 package com.loc8r.domain.interfaces
 
-import com.loc8r.domain.model.Project
+import com.loc8r.domain.models.Project
 import io.reactivex.Completable
 import io.reactivex.Observable
 
