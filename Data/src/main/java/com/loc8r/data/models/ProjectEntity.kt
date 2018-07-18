@@ -1,6 +1,6 @@
-package com.loc8r.domain.models
+package com.loc8r.data.models
 
-class Project(
+class ProjectEntity(
         val id: String,
         val name: String,
         val fullName: String,
