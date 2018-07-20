@@ -11,7 +11,7 @@ import io.reactivex.Completable
 import io.reactivex.Observable
 import javax.inject.Inject
 
-class ProjectsCacheDataStore @Inject  constructor(
+open class ProjectsCacheDataStore @Inject  constructor(
         private val projectsCache: ProjectsCache
 ): ProjectsDataStore {
     override fun getProjects(): Observable<List<ProjectEntity>> {
