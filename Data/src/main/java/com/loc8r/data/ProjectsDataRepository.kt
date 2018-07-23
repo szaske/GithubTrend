@@ -21,7 +21,7 @@ import javax.inject.Inject
  * 1. mapper is the class that helps us convert from
  * and to the Data ProjectEntity and the Domain Project class types.
  * 2. ProjectsCache is the item that can give us information about the cache
- * 3. The data store implemented
+ * 3. The factory, that determines our data store
  */
 class ProjectsDataRepository @Inject constructor(
         private val mapper: ProjectMapper,
@@ -38,7 +38,7 @@ class ProjectsDataRepository @Inject constructor(
      * observable.  In this case the BiFunction is taking our two
      * boolean observables and turning them into a Pair.
      *
-     * if then passes this pair to the factory to determine where we should
+     * it then passes this pair to the factory to determine where we should
      * get the data.  The Factory determines which store to use and returns it
      * and then we cast the getProjects method from the store...which returns
      * an Observable list of projects.  It's important to note that these projects

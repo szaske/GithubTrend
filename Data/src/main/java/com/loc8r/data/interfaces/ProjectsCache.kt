@@ -1,7 +1,7 @@
 /**
  * Within Clean Architecture, the Data layer allows us to abstract the sources
- * of the data that our application uses. We’re creating this interface that
- * enforce the operations to be implemented by external cache data source.
+ * of the data that our application uses. We’re creating this interface so that
+ * it enforce the operations to be implemented by external cache data source.
  */
 
 package com.loc8r.data.interfaces

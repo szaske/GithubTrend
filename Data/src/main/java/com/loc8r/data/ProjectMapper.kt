@@ -8,7 +8,8 @@ import com.loc8r.data.models.ProjectEntity
 import com.loc8r.domain.models.Project
 import javax.inject.Inject
 
-class ProjectMapper @Inject constructor(): EntityMapper<ProjectEntity, Project> {
+// Needs to be open so we can mock it in Mockito
+open class ProjectMapper @Inject constructor(): EntityMapper<ProjectEntity, Project> {
     override fun mapFromEntity(entity: ProjectEntity): Project {
         return Project(entity.id,
                 entity.name,

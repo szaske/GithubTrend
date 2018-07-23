@@ -12,6 +12,9 @@ import io.reactivex.Observable
 import javax.inject.Inject
 
 open class ProjectsCacheDataStore @Inject  constructor(
+        // our cache data source has this cache class, that
+        // helps us manage the cache by adding more methods to our data store
+        // methods that help us control the cache
         private val projectsCache: ProjectsCache
 ): ProjectsDataStore {
     override fun getProjects(): Observable<List<ProjectEntity>> {
