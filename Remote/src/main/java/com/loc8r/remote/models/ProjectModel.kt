@@ -1,4 +1,4 @@
-package com.loc8r.remote.model
+package com.loc8r.remote.models
 
 import com.google.gson.annotations.SerializedName
 

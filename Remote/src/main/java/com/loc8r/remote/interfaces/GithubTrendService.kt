@@ -11,9 +11,9 @@
  * You can find more information here:
  * https://developer.github.com/v3/search/#search-repositories
  */
-package com.loc8r.remote.service
+package com.loc8r.remote.interfaces
 
-import com.loc8r.remote.model.ProjectsResponseModel
+import com.loc8r.remote.models.ProjectsResponseModel
 import io.reactivex.Observable
 import retrofit2.http.GET
 import retrofit2.http.Query
