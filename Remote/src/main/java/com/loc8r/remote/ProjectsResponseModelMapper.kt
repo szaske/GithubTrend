@@ -4,7 +4,7 @@ import com.loc8r.data.models.ProjectEntity
 import com.loc8r.remote.interfaces.ModelMapper
 import com.loc8r.remote.models.ProjectModel
 
-class ProjectsResponseModelMapper: ModelMapper<ProjectModel,ProjectEntity> {
+open class ProjectsResponseModelMapper: ModelMapper<ProjectModel,ProjectEntity> {
     override fun mapFromModel(model: ProjectModel): ProjectEntity {
         return ProjectEntity(model.id,
                 model.name,
