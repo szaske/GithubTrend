@@ -23,7 +23,7 @@ object ProjectDataFactory {
         return Math.random() < 0.5
     }
 
-    fun makeProject(): Project {
+    fun makeProject(): ProjectModel {
         return Project(randomUUid(),randomUUid(),randomUUid(),
                 randomUUid(),randomUUid(),randomUUid(),
                 randomUUid(), randomBoolean())

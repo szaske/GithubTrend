@@ -5,7 +5,7 @@ import com.loc8r.remote.models.OwnerModel
 import com.loc8r.remote.models.ProjectModel
 import com.loc8r.remote.models.ProjectsResponseModel
 
-object ProjectsDataFactory {
+object ProjectDataFactory {
     fun makeOwner(): OwnerModel {
         return OwnerModel(DataFactory.randomUuid(),DataFactory.randomUuid())
     }
