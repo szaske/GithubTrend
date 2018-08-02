@@ -1,10 +1,14 @@
+/**
+ * Unit test for the Remote ProjectsRemoteImpl...the part of the Remote module that implements
+ * the Github API and returns the Project data from Github
+ */
+
 package com.loc8r.remote
 
 import com.loc8r.data.models.ProjectEntity
 import com.loc8r.remote.interfaces.GithubTrendService
 import com.loc8r.remote.models.ProjectModel
 import com.loc8r.remote.models.ProjectsResponseModel
-import com.loc8r.remote.utils.DataFactory
 import com.loc8r.remote.utils.ProjectDataFactory
 import com.nhaarman.mockito_kotlin.any
 import com.nhaarman.mockito_kotlin.mock
@@ -26,6 +30,7 @@ class ProjectsRemoteImplTest {
     private val service = mock<GithubTrendService>()
     private val remote = ProjectsRemoteImpl(service,mapper)
 
+    // A fake returned observable from the service when searchRepo is requested
     private fun stubServiceSearchRepositories(observable: Observable<ProjectsResponseModel>){
         whenever(service.searchRepositories(any(), any(), any()))
                 .thenReturn(observable)
