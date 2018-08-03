@@ -4,6 +4,6 @@ import com.loc8r.cache.model.Config
 
 object ConfigFactory {
     fun makeCachedConfig(): Config {
-        return Config(DataFactory.randomLong())
+        return Config(DataFactory.randomInt(), DataFactory.randomLong())
     }
 }

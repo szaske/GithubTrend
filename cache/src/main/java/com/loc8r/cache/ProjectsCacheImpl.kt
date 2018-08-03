@@ -12,7 +12,6 @@ import com.loc8r.data.models.ProjectEntity
 import io.reactivex.Completable
 import io.reactivex.Observable
 import io.reactivex.Single
-import io.reactivex.rxkotlin.toSingle
 import java.util.concurrent.TimeUnit
 import javax.inject.Inject
 
@@ -100,7 +99,7 @@ class ProjectsCacheImpl @Inject constructor(
         val expirationTime = TimeUnit.DAYS.toMillis(1)
 
         return projectsDatabase.configDao().getConfig()
-                .toSingle()
+                .single(Config(lastCacheTime = 0))
                 .map {
                     currentTime - it.lastCacheTime > expirationTime
                 }

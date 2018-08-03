@@ -4,7 +4,11 @@
 package com.loc8r.cache.model
 
 import android.arch.persistence.room.Entity
+import android.arch.persistence.room.PrimaryKey
+import com.loc8r.cache.ConfigConstants
 
-@Entity
-class Config(val lastCacheTime: Long) {
-}
+@Entity(tableName = ConfigConstants.TABLE_NAME)
+data class Config(
+        @PrimaryKey(autoGenerate = true)
+        var id: Int = -1,
+        var lastCacheTime: Long)
