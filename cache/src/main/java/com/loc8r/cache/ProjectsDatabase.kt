@@ -10,12 +10,18 @@ import android.arch.persistence.room.Room
 import android.arch.persistence.room.RoomDatabase
 import android.content.Context
 import com.loc8r.cache.model.CachedProject
+import com.loc8r.cache.model.Config
 import javax.inject.Inject
 
-@Database(entities = arrayOf(CachedProject::class), version = 1)
+@Database(entities = arrayOf(CachedProject::class,
+        Config::class), version = 1)
 abstract class ProjectsDatabase @Inject constructor(): RoomDatabase(){
 
+    // This gives us a Dao, so out DB has a reference to these abilities
     abstract fun cachedProjectsDao(): CachedProjectsDao
+
+    // This gives us a Dao, so out DB has a reference to these abilities
+    abstract fun configDao(): ConfigDao
 
     //We make it a Singleton
     private var INSTANCE: ProjectsDatabase? = null
