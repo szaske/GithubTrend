@@ -23,10 +23,11 @@ class CachedProjectsDaoTest {
             .allowMainThreadQueries()
             .build()
 
-    @After
-    fun TestCleanUp(){
-        database.close()
-    }
+// I don't believe closing the DB is needed since I'm using the inMemoryDB
+//    @After
+//    fun TestCleanUp(){
+//        database.close()
+//    }
 
     @Test
     fun getProjectsReturnsTheCorrectData(){
