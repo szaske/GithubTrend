@@ -19,8 +19,9 @@ class ProjectsCacheImplTest {
     // this ensures that my tests are executed instantly, so I can retrieve the results and assert
     // the values that I get back from them.
     // see: https://developer.android.com/reference/android/arch/core/executor/testing/InstantTaskExecutorRule
-    @get:Rule
-    var instantTaskExecutorRule = InstantTaskExecutorRule()
+    // see: http://www.baeldung.com/kotlin-jvm-field-annotation
+    @Rule
+    @JvmField var instantTaskExecutorRule = InstantTaskExecutorRule()
 
     // I need a database and mapper to test the Projects Cache implementation, so I'll create them.
     // Here I use the Robolectric RuntimeEnvironment
