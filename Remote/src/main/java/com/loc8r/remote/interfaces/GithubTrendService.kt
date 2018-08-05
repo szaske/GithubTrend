@@ -14,6 +14,7 @@
 package com.loc8r.remote.interfaces
 
 import com.loc8r.remote.models.ProjectsResponseModel
+import io.reactivex.Flowable
 import io.reactivex.Observable
 import retrofit2.http.GET
 import retrofit2.http.Query
@@ -23,5 +24,5 @@ interface GithubTrendService {
     fun searchRepositories(@Query("q") query: String,
                            @Query("sort") sortBy:String,
                            @Query("order") order: String)
-    : Observable<ProjectsResponseModel>
+    : Flowable<ProjectsResponseModel>
 }

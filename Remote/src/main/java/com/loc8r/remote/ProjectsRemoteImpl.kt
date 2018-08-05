@@ -11,6 +11,7 @@ package com.loc8r.remote
 import com.loc8r.data.interfaces.ProjectsRemote
 import com.loc8r.data.models.ProjectEntity
 import com.loc8r.remote.interfaces.GithubTrendService
+import io.reactivex.Flowable
 import io.reactivex.Observable
 import javax.inject.Inject
 
@@ -28,7 +29,7 @@ class ProjectsRemoteImpl @Inject constructor(
      * function that turns a Observable<ProjectsResponseModel> into a
      * Observable<List<ProjectsEntity>>
      */
-    override fun getProjects(): Observable<List<ProjectEntity>> {
+    override fun getProjects(): Flowable<List<ProjectEntity>> {
         return service.searchRepositories("language:kotlin", "stars", "desc")
                 .map {
                     it.items.map {

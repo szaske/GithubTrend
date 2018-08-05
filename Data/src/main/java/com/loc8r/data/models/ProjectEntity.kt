@@ -1,6 +1,6 @@
 package com.loc8r.data.models
 
-class ProjectEntity(
+data class ProjectEntity(
         val id: String,
         val name: String,
         val fullName: String,
@@ -8,7 +8,7 @@ class ProjectEntity(
         val dateCreated: String,
         val ownerName: String,
         val ownerAvatar: String,
-        val isBookmarked: Boolean = false
+        val isBookmarked: Boolean
 ) {
 
 }

@@ -11,13 +11,14 @@ import com.loc8r.data.interfaces.ProjectsDataStore
 import com.loc8r.data.interfaces.ProjectsRemote
 import com.loc8r.data.models.ProjectEntity
 import io.reactivex.Completable
+import io.reactivex.Flowable
 import io.reactivex.Observable
 import javax.inject.Inject
 
 open class ProjectsRemoteDataStore @Inject constructor(
         private val projectsRemote: ProjectsRemote
 ): ProjectsDataStore {
-    override fun getProjects(): Observable<List<ProjectEntity>> {
+    override fun getProjects(): Flowable<List<ProjectEntity>> {
         return projectsRemote.getProjects()
     }
 
@@ -29,7 +30,7 @@ open class ProjectsRemoteDataStore @Inject constructor(
         throw UnsupportedOperationException("Clearing projects is not supported by the remote data store")
     }
 
-    override fun getBookmarkedProjects(): Observable<List<ProjectEntity>> {
+    override fun getBookmarkedProjects(): Flowable<List<ProjectEntity>> {
         throw UnsupportedOperationException("Getting bookmarked projects is not supported by the remote data store")
     }
 

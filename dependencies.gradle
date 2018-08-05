@@ -21,7 +21,7 @@ ext{
     retrofitVersion = '2.3.0'
     //libraries - Cache
     archCompVersion = '1.1.1'
-    roomVersion = '1.1.1'
+    roomVersion = '1.0.0'
 
 
     // Testing

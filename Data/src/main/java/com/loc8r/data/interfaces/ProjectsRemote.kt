@@ -5,9 +5,10 @@
 package com.loc8r.data.interfaces
 
 import com.loc8r.data.models.ProjectEntity
+import io.reactivex.Flowable
 import io.reactivex.Observable
 
 interface ProjectsRemote {
 
-    fun getProjects(): Observable<List<ProjectEntity>>
+    fun getProjects(): Flowable<List<ProjectEntity>>
 }

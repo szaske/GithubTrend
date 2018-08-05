@@ -10,6 +10,7 @@ import com.loc8r.cache.model.Config
 import com.loc8r.data.interfaces.ProjectsCache
 import com.loc8r.data.models.ProjectEntity
 import io.reactivex.Completable
+import io.reactivex.Flowable
 import io.reactivex.Observable
 import io.reactivex.Single
 import java.util.concurrent.TimeUnit
@@ -40,9 +41,8 @@ class ProjectsCacheImpl @Inject constructor(
 
     // This function gets the list of Projects and then maps them to ProjectEntities
     // for the data layer
-    override fun getProjects(): Observable<List<ProjectEntity>> {
+    override fun getProjects(): Flowable<List<ProjectEntity>> {
         return projectsDatabase.cachedProjectsDao().getProjects()
-                .toObservable()
                 .map{
                     it.map {
                         mapper.mapFromCache(it)
@@ -51,9 +51,8 @@ class ProjectsCacheImpl @Inject constructor(
 
     }
 
-    override fun getBookmarkedProjects(): Observable<List<ProjectEntity>> {
+    override fun getBookmarkedProjects(): Flowable<List<ProjectEntity>> {
         return projectsDatabase.cachedProjectsDao().getBookmarkedProjects()
-                .toObservable()
                 .map {
                     it.map {
                         mapper.mapFromCache(it)
@@ -99,7 +98,7 @@ class ProjectsCacheImpl @Inject constructor(
         val expirationTime = TimeUnit.DAYS.toMillis(1)
 
         return projectsDatabase.configDao().getConfig()
-                .single(Config(lastCacheTime = 0))
+                .onErrorReturn { Config(lastCacheTime = 0) }
                 .map {
                     currentTime - it.lastCacheTime > expirationTime
                 }

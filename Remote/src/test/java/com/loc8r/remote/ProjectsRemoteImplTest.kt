@@ -14,6 +14,8 @@ import com.nhaarman.mockito_kotlin.any
 import com.nhaarman.mockito_kotlin.mock
 import com.nhaarman.mockito_kotlin.verify
 import com.nhaarman.mockito_kotlin.whenever
+import io.reactivex.Flowable
+import io.reactivex.Flowable.just
 import io.reactivex.Observable
 import org.junit.Before
 import org.junit.Test
@@ -31,9 +33,13 @@ class ProjectsRemoteImplTest {
     private val remote = ProjectsRemoteImpl(service,mapper)
 
     // A fake returned observable from the service when searchRepo is requested
-    private fun stubServiceSearchRepositories(observable: Observable<ProjectsResponseModel>){
+//    private fun stubServiceSearchRepositories(observable: Observable<ProjectsResponseModel>){
+//        whenever(service.searchRepositories(any(), any(), any()))
+//                .thenReturn(observable)
+//    }
+    private fun stubServiceSearchRepositories(flowable: Flowable<ProjectsResponseModel>){
         whenever(service.searchRepositories(any(), any(), any()))
-                .thenReturn(observable)
+                .thenReturn(flowable)
     }
 
     private fun stubMapperMapFromModel(model: ProjectModel, entity: ProjectEntity){
@@ -47,7 +53,7 @@ class ProjectsRemoteImplTest {
 
     @Test
     fun getProjectsCompletes() {
-        stubServiceSearchRepositories(Observable.just(ProjectDataFactory.makeProjectsResponse()))
+        stubServiceSearchRepositories(Flowable.just(ProjectDataFactory.makeProjectsResponse()))
         //Does not seem to be needed as the function call completes without it, but added anyway
         stubMapperMapFromModel(any(),ProjectDataFactory.makeProjectEntity())
         val testObserver = remote.getProjects().test()
@@ -56,7 +62,7 @@ class ProjectsRemoteImplTest {
 
     @Test
     fun getProjectsCallsServer(){
-        stubServiceSearchRepositories(Observable.just(ProjectDataFactory.makeProjectsResponse()))
+        stubServiceSearchRepositories(Flowable.just(ProjectDataFactory.makeProjectsResponse()))
         //Does not seem to be needed as the function call completes without it, but added anyway
         stubMapperMapFromModel(any(),ProjectDataFactory.makeProjectEntity())
         val testObserver = remote.getProjects().test()
@@ -66,7 +72,7 @@ class ProjectsRemoteImplTest {
     @Test
     fun getProjectsReturnsCorrectData(){
         val response = ProjectDataFactory.makeProjectsResponse()
-        stubServiceSearchRepositories(Observable.just(response))
+        stubServiceSearchRepositories(Flowable.just(response))
 
         /**
          * At this point response is an Observable of ProjectsResponseModel
@@ -85,7 +91,7 @@ class ProjectsRemoteImplTest {
 
     @Test
     fun getProjectsCallsServerWithCorrectParameters(){
-        stubServiceSearchRepositories(Observable.just(ProjectDataFactory.makeProjectsResponse()))
+        stubServiceSearchRepositories(Flowable.just(ProjectDataFactory.makeProjectsResponse()))
         //Does not seem to be needed as the function call completes without it, but added anyway
         stubMapperMapFromModel(any(),ProjectDataFactory.makeProjectEntity())
         val testObserver = remote.getProjects().test()

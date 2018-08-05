@@ -12,7 +12,8 @@ open class ProjectsResponseModelMapper: ModelMapper<ProjectModel,ProjectEntity> 
                 model.starCount.toString(),
                 model.dateCreated,
                 model.owner.ownerName,
-                model.owner.ownerAvater)
+                model.owner.ownerAvater,
+                false)
     }
 
 }
