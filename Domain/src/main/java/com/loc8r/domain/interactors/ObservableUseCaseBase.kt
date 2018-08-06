@@ -2,7 +2,7 @@
 /**
  *  Within Clean Architecture, the Domain layer defines Use Cases
  *  which define operations which can be performed in our Android
- *  project. In this lesson, we’ll be creating some BASE classes
+ *  project. I'm creating some BASE classes
  *  which these Use Cases will inherit from to save us writing
  *  boilerplate code repeatedly in our Use Cases implementations.
  */

@@ -10,7 +10,7 @@ import javax.inject.Inject
  *  Constructor notes: The projectsRepository property is the
  *  abstracted access point to outside data layers.  It's an
  *  interface that's treated as a class, and a
- *  postExecutionThread, which is out name for a ReactiveX
+ *  postExecutionThread, which is our name for a ReactiveX
  *  scheduler.  I assume we're changing the name to highlight that
  *  our Domain module should not know the implementation details
  *
