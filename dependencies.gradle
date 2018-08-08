@@ -6,7 +6,7 @@ ext{
     androidTargetSdkVersion = 26
     androidCompileSdkVersion = 26
     // kotlinVersion = '1.2.51'
-    kotlinVersion = '1.2.30'
+    kotlinVersion = '1.2.60'
 
     //Libraries
     supportLibraryVersion = '26.1.0'
@@ -27,8 +27,10 @@ ext{
 
     // Testing
     jUnitVersion = '4.12'
+    kotlinJUnit = '1.2.60'
     assertJVersion = '3.8.0'
-    mockitoKotlinVersion = '1.5.0'
+    mockitoKotlinVersion = '1.6.0'
+    mockitoKotlin2Version = '2.0.0-RC1'
     robolectricVersion = '3.4.2'
     // Testing - Cache
     androidSupportRunnerVersion = '1.0.2'
@@ -51,7 +53,7 @@ ext{
 
     cacheTestDependencies = [
             junit:              "junit:junit:${jUnitVersion}",
-            kotlinJUnit:        "org.jetbrains.kotlin:kotlin-test-junit:${kotlin_version}",
+            kotlinJUnit:        "org.jetbrains.kotlin:kotlin-test-junit:${kotlinJUnit}",
             robolectric:        "org.robolectric:robolectric:${robolectricVersion}",
             assertj:            "org.assertj:assertj-core:${assertJVersion}",
             mockito:            "com.nhaarman:mockito-kotlin:${mockitoKotlinVersion}",
@@ -118,9 +120,9 @@ ext{
 
     presentationTestDependencies = [
             junit:              "junit:junit:${jUnitVersion}",
-            kotlinJUnit:        "org.jetbrains.kotlin:kotlin-test-junit:${kotlin_version}",
+            kotlinJUnit:        "org.jetbrains.kotlin:kotlin-test-junit:${kotlinJUnit}",
             assertj:            "org.assertj:assertj-core:${assertJVersion}",
-            mockito:            "com.nhaarman:mockito-kotlin:${mockitoKotlinVersion}",
+            mockito:            "com.nhaarman.mockitokotlin2:mockito-kotlin:${mockitoKotlin2Version}",
             robolectric:        "org.robolectric:robolectric:${robolectricVersion}",
             archTesting:        "android.arch.core:core-testing:${archCompVersion}",
     ]
@@ -141,7 +143,7 @@ ext{
 
     remoteTestDependencies = [
             junit:              "junit:junit:${jUnitVersion}",
-            kotlinJUnit:        "org.jetbrains.kotlin:kotlin-test-junit:${kotlin_version}",
+            kotlinJUnit:        "org.jetbrains.kotlin:kotlin-test-junit:${kotlinJUnit}",
             assertj:            "org.assertj:assertj-core:${assertJVersion}",
             mockito:            "com.nhaarman:mockito-kotlin:${mockitoKotlinVersion}"
     ]

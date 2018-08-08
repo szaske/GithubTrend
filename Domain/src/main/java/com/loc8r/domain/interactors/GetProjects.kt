@@ -18,8 +18,10 @@ import javax.inject.Inject
  *  inherits from the ObservableUseCaseBase base class.
  *
  *  We have no params, so we're using the Kotlin Nothing class.
+ *
+ *  Class needs to be open to be mocked in Mockito
  */
-class GetProjects @Inject constructor(
+open class GetProjects @Inject constructor(
         private val projectsRepository: ProjectsRepository,
         postExecutionThread: PostExecutionThread)
     : ObservableUseCaseBase<List<Project>, Nothing>(postExecutionThread) {

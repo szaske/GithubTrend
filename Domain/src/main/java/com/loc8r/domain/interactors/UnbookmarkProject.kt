@@ -11,7 +11,8 @@ import com.loc8r.domain.interfaces.ProjectsRepository
 import io.reactivex.Completable
 import javax.inject.Inject
 
-class UnbookmarkProject @Inject constructor(
+// class needs to be open to be mocked in Mockito
+open class UnbookmarkProject @Inject constructor(
         private val projectsRepository: ProjectsRepository,
         postExecutionThread: PostExecutionThread)
     : CompletableUseCaseBase<UnbookmarkProject.Params>(postExecutionThread) {
