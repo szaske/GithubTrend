@@ -67,6 +67,7 @@ dependencies {
     implementation mobileUiDependencies.roomRxJava
     implementation mobileUiDependencies.archRuntime
     implementation mobileUiDependencies.archExtensions
+    implementation mobileUiDependencies.constraintLayout
     annotationProcessor mobileUiDependencies.archCompiler
 
     // Test Dependencies

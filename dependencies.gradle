@@ -25,6 +25,7 @@ ext{
     // libraries - Presentation
     rxAndroidVersion = '2.0.2'
     // libraries - Mobile_UI
+    constLayoutVersion = '1.1.0'
 
     // deliberate use of old glide
     glideVersion = '4.0.0'
@@ -127,6 +128,7 @@ ext{
             archRuntime:        "android.arch.lifecycle:runtime:${archCompVersion}",
             archExtensions:     "android.arch.lifecycle:extensions:${archCompVersion}",
             archCompiler:       "android.arch.lifecycle:compiler:${archCompVersion}",
+            constraintLayout:   "com.android.support.constraint:constraint-layout:${constLayoutVersion}"
     ]
 
     mobileUiTestDependencies = [
