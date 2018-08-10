@@ -10,6 +10,7 @@ package com.loc8r.mobile_ui.di
 
 import android.app.Application
 import com.loc8r.mobile_ui.GithubTrendApplication
+import com.loc8r.mobile_ui.di.module.*
 import dagger.BindsInstance
 import dagger.Component
 import dagger.android.AndroidInjectionModule
@@ -17,7 +18,13 @@ import javax.inject.Singleton
 
 
 @Singleton
-@Component(modules = arrayOf(AndroidInjectionModule::class))
+@Component(modules = arrayOf(AndroidInjectionModule::class,
+        ApplicationModule::class,
+        UiModule::class,
+        PresentationModule::class,
+        DataModule::class,
+        CacheModule::class,
+        RemoteModule::class))
 interface ApplicationComponent {
 
     //I now need to provide a way for this component to be constructed

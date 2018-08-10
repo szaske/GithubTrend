@@ -7,7 +7,7 @@ import retrofit2.Retrofit
 import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
 import java.util.concurrent.TimeUnit
 
-class GithubTrendServiceFactory {
+object GithubTrendServiceFactory {
 
     // function helps enable logging
     private fun makeLoggingInterceptor(isDebug: Boolean): HttpLoggingInterceptor {
@@ -42,7 +42,7 @@ class GithubTrendServiceFactory {
     }
 
     // The external function that returns the Github service
-    fun makeGithubTrendService(isDebug: Boolean): GithubTrendService {
+    open fun makeGithubTrendService(isDebug: Boolean): GithubTrendService {
         val okHttpClient = makeOkHttpClient(
                 makeLoggingInterceptor(isDebug))
         return makeGithubTrendService(okHttpClient)

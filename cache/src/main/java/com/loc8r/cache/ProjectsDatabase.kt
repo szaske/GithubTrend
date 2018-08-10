@@ -23,25 +23,29 @@ abstract class ProjectsDatabase @Inject constructor(): RoomDatabase(){
     // This gives us a Dao, so out DB has a reference to these abilities
     abstract fun configDao(): ConfigDao
 
-    //We make it a Singleton
-    private var INSTANCE: ProjectsDatabase? = null
+    // This is similar to static methods in Java
+    companion object {
 
-    // Any is the Kotlin super class.  I think this just makes a generic object...which as an
-    // Any has equals and hashcode
-    private val lock = Any()
+        //We make it a Singleton
+        private var INSTANCE: ProjectsDatabase? = null
 
-    fun getInstance(context: Context): ProjectsDatabase {
-        if(INSTANCE == null){
-            synchronized(lock){
-                if (INSTANCE == null){
-                    INSTANCE = Room.databaseBuilder(context.applicationContext,
-                            ProjectsDatabase::class.java, "projects.db")
-                            .build()
+        // Any is the Kotlin super class.  I think this just makes a generic object...which as an
+        // Any has equals and hashcode
+        private val lock = Any()
+
+        fun getInstance(context: Context): ProjectsDatabase {
+            if (INSTANCE == null) {
+                synchronized(lock) {
+                    if (INSTANCE == null) {
+                        INSTANCE = Room.databaseBuilder(context.applicationContext,
+                                ProjectsDatabase::class.java, "projects.db")
+                                .build()
+                    }
+                    return INSTANCE as ProjectsDatabase
                 }
-                return INSTANCE as ProjectsDatabase
             }
+            return INSTANCE as ProjectsDatabase
         }
-        return INSTANCE as ProjectsDatabase
     }
 
 }
