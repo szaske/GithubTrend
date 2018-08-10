@@ -10,7 +10,7 @@ ext{
 
     //Libraries
     supportLibraryVersion = '26.1.0'
-    rxJavaVersion = '2.0.2'
+    rxJavaVersion = '2.2.0'
     javaxAnnotationVersion = '1.0'
     javaxInjectVersion = '1'
     rxKotlinVersion = '2.2.0'
@@ -24,6 +24,12 @@ ext{
     roomVersion = '1.0.0'
     // libraries - Presentation
     rxAndroidVersion = '2.0.2'
+    // libraries - Mobile_UI
+
+    // deliberate use of old glide
+    glideVersion = '4.0.0'
+    timberVersion = '4.7.1'
+    glassfishAnnotationVersion = '10.0-b28'
 
     // Testing
     jUnitVersion = '4.12'
@@ -35,6 +41,12 @@ ext{
     // Testing - Cache
     androidSupportRunnerVersion = '1.0.2'
     androidSupportRulesVersion = '1.0.2'
+    // Testing Mobile_UI
+    mockitoAndroidVersion = '2.21.0'
+    espressoVersion = '3.0.2'
+    runnerVersion = '1.0.2'
+
+
 
     // Dependencies for the Cache module/layer
     cacheDependencies = [
@@ -89,6 +101,52 @@ ext{
             mockito:            "com.nhaarman:mockito-kotlin:${mockitoKotlinVersion}",
             assertj:            "org.assertj:assertj-core:${assertJVersion}"
     ]
+
+    mobileUiDependencies = [
+            androidAnnotations: "com.android.support:support-annotations:${supportLibraryVersion}",
+            androidSupportV13:  "com.android.support:support-v13:${supportLibraryVersion}",
+            androidSupportV4:   "com.android.support:support-v4:${supportLibraryVersion}",
+            appCompatV7:        "com.android.support:appcompat-v7:${supportLibraryVersion}",
+            dagger:             "com.google.dagger:dagger:${daggerVersion}",
+            daggerCompiler:     "com.google.dagger:dagger-compiler:${daggerVersion}",
+            daggerProcessor:    "com.google.dagger:dagger-android-processor:${daggerVersion}",
+            daggerSupport:      "com.google.dagger:dagger-android-support:${daggerVersion}",
+            glassfishAnnotation: "org.glassfish:javax.annotation:${glassfishAnnotationVersion}",
+            glide:              "com.github.bumptech.glide:glide:${glideVersion}",
+            javaxAnnotation:    "javax.annotation:jsr250-api:${javaxAnnotationVersion}",
+            javaxInject:        "javax.inject:javax.inject:${javaxInjectVersion}",
+            kotlin:             "org.jetbrains.kotlin:kotlin-stdlib-jre8:${kotlinVersion}",
+            roomRuntime:        "android.arch.persistence.room:runtime:${archCompVersion}",
+            roomCompiler:       "android.arch.persistence.room:compiler:${archCompVersion}",
+            roomRxJava:         "android.arch.persistence.room:rxjava2:${archCompVersion}",
+            rxKotlin:           "io.reactivex.rxjava2:rxkotlin:${rxKotlinVersion}",
+            rxAndroid:          "io.reactivex.rxjava2:rxandroid:${rxAndroidVersion}",
+            supportRecyclerView:"com.android.support:recyclerview-v7:${supportLibraryVersion}",
+            supportDesign:      "com.android.support:design:${supportLibraryVersion}",
+            timber:             "com.jakewharton.timber:timber:${timberVersion}",
+            archRuntime:        "android.arch.lifecycle:runtime:${archCompVersion}",
+            archExtensions:     "android.arch.lifecycle:extensions:${archCompVersion}",
+            archCompiler:       "android.arch.lifecycle:compiler:${archCompVersion}",
+    ]
+
+    mobileUiTestDependencies = [
+            androidRunner:      "com.android.support.test:runner:${runnerVersion}",
+            androidRules:       "com.android.support.test:rules:${runnerVersion}",
+            assertj:            "org.assertj:assertj-core:${assertJVersion}",
+            espressoContrib:    "com.android.support.test.espresso:espresso-contrib:${espressoVersion}",
+            espressoCore:       "com.android.support.test.espresso:espresso-core:${espressoVersion}",
+            espressoIntents:    "com.android.support.test.espresso:espresso-intents:${espressoVersion}",
+            junit:              "junit:junit:${jUnitVersion}",
+            kotlinJUnit:        "org.jetbrains.kotlin:kotlin-test-junit:${kotlin_version}",
+            mockito:            "com.nhaarman:mockito-kotlin:${mockitoKotlinVersion}",
+            mockitoAndroid:     "org.mockito:mockito-android:${mockitoAndroidVersion}",
+            supportRules:       "com.android.support.test:rules:${androidSupportRulesVersion}",
+            supportRunner:      "com.android.support.test:runner:${androidSupportRunnerVersion}"
+    ]
+
+
+
+
 
     // Full Presentation Dependendcies list
 //    presentationDependencies = [
