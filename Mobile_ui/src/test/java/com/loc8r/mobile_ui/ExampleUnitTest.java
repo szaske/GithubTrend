@@ -1,4 +1,4 @@
-package com.loc8r.presentation;
+package com.loc8r.mobile_ui;
 
 import org.junit.Test;
 

@@ -18,10 +18,25 @@ buildscript {
 apply from: 'dependencies.gradle'
 
 allprojects {
+
     repositories {
         google()
         jcenter()
     }
+
+    // required because of what I believe is support-annotation
+    // requirements in the Mobile_UI module.
+    // if I want to upgrade to Glide 4.7.1 as it has a dependency on
+    // com.android.support:support-annotations:27.1.1 which causes problems
+    //
+    def globalConfiguration = rootProject.extensions.getByName("ext")
+    configurations {
+        all {
+            resolutionStrategy {
+            }
+        }
+    }
+
 }
 
 task clean(type: Delete) {

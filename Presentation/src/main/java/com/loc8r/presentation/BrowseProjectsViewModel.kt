@@ -17,17 +17,21 @@ import javax.inject.Inject
 // We inherit from the ViewModel class.  It has a function onCleared
 // getProjects is the use case from the Domain module.  Each of these passed in dependencies is a
 // domain Use case class, built on top of an Observable or Completable UseCaseBase class
-class BrowseProjectsViewModel @Inject constructor(
-        private val getProjects: GetProjects,
+open class BrowseProjectsViewModel @Inject constructor(
+        private val getProjects: GetProjects?,
         private val bookmarkProject: BookmarkProject,
         private val unbookmarkProject: UnbookmarkProject,
         private val mapper: ProjectViewMapper): ViewModel() {
 
     private val liveData: MutableLiveData<Resource<List<ProjectView>>> = MutableLiveData()
 
+    init {
+        fetchProjects()
+    }
+
     // this disposes of any subscriptions as needed when the view is destroyed
     override fun onCleared() {
-        getProjects.dispose()
+        getProjects?.dispose()
         super.onCleared()
     }
 
@@ -39,7 +43,7 @@ class BrowseProjectsViewModel @Inject constructor(
     fun fetchProjects(){
         // This simply sets the resource State to loading
         liveData.postValue(Resource(ResourceState.LOADING,null,null))
-        return getProjects.execute(ProjectSubscriber())
+        return getProjects?.execute(ProjectSubscriber())!!
     }
 
     fun bookmarkProject(projectId: String){
@@ -61,9 +65,7 @@ class BrowseProjectsViewModel @Inject constructor(
          *
          * The [Observable] will not call this method if it calls [.onError].
          */
-        override fun onComplete() {
-            TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
-        }
+        override fun onComplete() { }
 
         /**
          * Provides the Observer with a new item to observe.
@@ -115,7 +117,8 @@ class BrowseProjectsViewModel @Inject constructor(
          * @param e the exception, not null.
          */
         override fun onError(e: Throwable) {
-            TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+            liveData.postValue(Resource(ResourceState.ERROR, liveData.value?.data,
+                    e.localizedMessage))
         }
 
     }

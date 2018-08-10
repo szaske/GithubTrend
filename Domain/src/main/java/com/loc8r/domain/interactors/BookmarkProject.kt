@@ -11,7 +11,7 @@ import javax.inject.Inject
  *  base class.
  */
 
-class BookmarkProject @Inject constructor(
+open class BookmarkProject @Inject constructor(
         private val projectsRepository: ProjectsRepository,
         postExecutionThread: PostExecutionThread)
     : CompletableUseCaseBase<BookmarkProject.Params>(postExecutionThread) {

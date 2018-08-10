@@ -5,7 +5,7 @@ import com.loc8r.presentation.interfaces.PresentationMapper
 import com.loc8r.presentation.models.ProjectView
 import javax.inject.Inject
 
-class ProjectViewMapper @Inject constructor(): PresentationMapper<ProjectView, Project> {
+open class ProjectViewMapper @Inject constructor(): PresentationMapper<ProjectView, Project> {
 
     override fun mapToView(type: Project): ProjectView {
         return ProjectView(type.id,type.name,type.fullName,type.starCount,
