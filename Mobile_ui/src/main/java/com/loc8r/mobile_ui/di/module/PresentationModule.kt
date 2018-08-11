@@ -7,6 +7,7 @@ package com.loc8r.mobile_ui.di.module
 import android.arch.lifecycle.ViewModel
 import android.arch.lifecycle.ViewModelProvider
 import com.loc8r.mobile_ui.di.ViewModelFactory
+import com.loc8r.presentation.BrowseBookmarkedProjectsViewModel
 import com.loc8r.presentation.BrowseProjectsViewModel
 import dagger.Binds
 import dagger.MapKey
@@ -22,6 +23,12 @@ abstract class PresentationModule {
     @IntoMap
     @ViewModelKey(BrowseProjectsViewModel::class)
     abstract fun bindBrowseProjectsViewModel(viewModel: BrowseProjectsViewModel): ViewModel
+
+    @Binds
+    @IntoMap
+    @ViewModelKey(BrowseBookmarkedProjectsViewModel::class)
+    abstract fun bindBrowseBookmarkedProjectsViewModel(viewModel: BrowseBookmarkedProjectsViewModel): ViewModel
+
 
     // Because I want to use my own View model factory instead of the JetPack one, I need to inject
     // an instance of this wherever a viewModel is needed

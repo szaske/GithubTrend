@@ -35,8 +35,11 @@ class BrowseBookmarkedProjectsViewModel @Inject constructor(
     }
 
     fun fetchProjects(){
-        // This simply sets the resource State to loading
+        // This sets the resource State to loading
         liveData.postValue(Resource(ResourceState.LOADING,null,null))
+
+        // and then asks the Domain layer to return the bookmarked Projects into the LiveData stream
+        // which it does through the ProjectsSubscriber inner class
         return getBookmarkedProjects.execute(ProjectsSubscriber())
     }
 
