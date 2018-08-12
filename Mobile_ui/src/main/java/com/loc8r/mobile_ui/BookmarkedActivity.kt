@@ -89,6 +89,7 @@ class BookmarkedActivity: AppCompatActivity() {
 
     private fun setupBrowseRecycler(){
         recycler_projects_bookmarked.layoutManager = LinearLayoutManager(this)
+        recycler_projects_bookmarked.adapter = adapter
     }
 
     // A function for showing or hiding the progress circle
