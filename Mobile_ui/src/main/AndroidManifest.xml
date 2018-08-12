@@ -24,6 +24,7 @@
         </activity>
         <activity
             android:name=".BookmarkedActivity"
+            android:parentActivityName=".BrowseActivity"
             android:label="@string/title_bookmarked" />
 
 
