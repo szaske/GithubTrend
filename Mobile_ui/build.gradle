@@ -72,6 +72,7 @@ dependencies {
 
     // Test Dependencies
     kaptTest mobileUiDependencies.daggerCompiler
+    testImplementation mobileUiTestDependencies.kotlinJUnit
 
     // Instrumentation Test Dependencies
     androidTestImplementation mobileUiTestDependencies.junit
