@@ -1,11 +1,9 @@
 package com.loc8r.mobile_ui.di.module
 
-import android.app.Application
 import com.loc8r.cache.BuildConfig
-import com.loc8r.cache.ProjectsCacheImpl
-import com.loc8r.cache.ProjectsDatabase
-import com.loc8r.data.interfaces.ProjectsCache
+import com.loc8r.data.interfaces.ProjectsRemote
 import com.loc8r.remote.GithubTrendServiceFactory
+import com.loc8r.remote.ProjectsRemoteImpl
 import com.loc8r.remote.interfaces.GithubTrendService
 import dagger.Binds
 import dagger.Module
@@ -24,5 +22,5 @@ abstract class RemoteModule {
     }
 
     @Binds
-    abstract fun bindProjectsCache(projectsCache: ProjectsCacheImpl): ProjectsCache
+    abstract fun bindProjectsRemote(projectsRemote: ProjectsRemoteImpl): ProjectsRemote
 }

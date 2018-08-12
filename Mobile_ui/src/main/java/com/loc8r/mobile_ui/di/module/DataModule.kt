@@ -7,6 +7,7 @@
 package com.loc8r.mobile_ui.di.module
 
 import com.loc8r.data.ProjectsDataRepository
+import com.loc8r.domain.interfaces.ProjectsRepository
 import dagger.Binds
 import dagger.Module
 
@@ -14,5 +15,5 @@ import dagger.Module
 abstract class DataModule {
 
     @Binds
-    abstract fun bindDataRepository(dataRepository: ProjectsDataRepository): ProjectsDataRepository
+    abstract fun bindDataRepository(dataRepository: ProjectsDataRepository): ProjectsRepository
 }

@@ -18,9 +18,9 @@ import io.reactivex.schedulers.Schedulers
 
 // defined with T generics, so the class works with various Observable types
 abstract class ObservableUseCaseBase<T, in Params> constructor(
-        // an abstraction for the schedule thread for each observable
-        // required in the constructor
-        private val postExecutionThread: PostExecutionThread) {
+    // an abstraction for the schedule thread for each observable
+    // required in the constructor
+    private val postExecutionThread: PostExecutionThread) {
 
     // A reference to the disposable observable
     private val disposables = CompositeDisposable()
@@ -32,15 +32,15 @@ abstract class ObservableUseCaseBase<T, in Params> constructor(
     // 1. Creates the observable
     // 2. selects the scheduler (see http://reactivex.io/documentation/operators/subscribeon.html)
     // 3. Creates a reference to the disposable Observable
-    open fun execute(observer: DisposableObserver<T>, params: Params? = null){
+    open fun execute(singleObserver: DisposableObserver<T>, params: Params? = null){
         val observable = this.buildUseCaseObservable(params)
                 .subscribeOn(Schedulers.io())
                 .observeOn(postExecutionThread.scheduler)
-        addDisposable(observable.subscribeWith(observer))
+        addDisposable(observable.subscribeWith(singleObserver))
     }
 
     // Method that adds a disposable to the list of disposables.
-    private fun addDisposable(disposable: Disposable) {
+    fun addDisposable(disposable: Disposable) {
         disposables.add(disposable)
     }
 

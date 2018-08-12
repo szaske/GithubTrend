@@ -17,7 +17,7 @@ import javax.inject.Inject
 // We inherit from the ViewModel class.  It has a function onCleared
 // getProjects is the use case from the Domain module.  Each of these passed in dependencies is a
 // domain Use case class, built on top of an Observable or Completable UseCaseBase class
-open class BrowseProjectsViewModel @Inject constructor(
+open class BrowseProjectsViewModel @Inject internal constructor(
         private val getProjects: GetProjects?,
         private val bookmarkProject: BookmarkProject,
         private val unbookmarkProject: UnbookmarkProject,
@@ -43,7 +43,7 @@ open class BrowseProjectsViewModel @Inject constructor(
     fun fetchProjects(){
         // This simply sets the resource State to loading
         liveData.postValue(Resource(ResourceState.LOADING,null,null))
-        return getProjects?.execute(ProjectSubscriber())!!
+        getProjects?.execute(ProjectSubscriber())
     }
 
     fun bookmarkProject(projectId: String){

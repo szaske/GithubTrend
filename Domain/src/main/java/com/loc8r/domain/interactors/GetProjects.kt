@@ -24,7 +24,7 @@ import javax.inject.Inject
 open class GetProjects @Inject constructor(
         private val projectsRepository: ProjectsRepository,
         postExecutionThread: PostExecutionThread)
-    : ObservableUseCaseBase<List<Project>, Nothing>(postExecutionThread) {
+    : ObservableUseCaseBase<List<Project>, Nothing?>(postExecutionThread) {
 
     // here we override the parents method and replace it with a call to the
     // repository

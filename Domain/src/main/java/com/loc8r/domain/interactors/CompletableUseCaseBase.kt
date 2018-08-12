@@ -20,9 +20,9 @@ import io.reactivex.schedulers.Schedulers
 
 // defined with T generics, so the class works with various Observable types
 abstract class CompletableUseCaseBase<in Params> constructor(
-        // an abstraction for the schedule thread for each observable
-        // required in the constructor
-        private val postExecutionThread: PostExecutionThread) {
+    // an abstraction for the schedule thread for each observable
+    // required in the constructor
+    private val postExecutionThread: PostExecutionThread) {
 
     // A reference to the disposable observable, so we can dispose of it
     private val disposables = CompositeDisposable()

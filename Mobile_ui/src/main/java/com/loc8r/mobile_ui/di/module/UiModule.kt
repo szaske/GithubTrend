@@ -1,6 +1,7 @@
 package com.loc8r.mobile_ui.di.module
 
 import com.loc8r.domain.interfaces.PostExecutionThread
+import com.loc8r.mobile_ui.BookmarkedActivity
 import com.loc8r.mobile_ui.BrowseActivity
 import com.loc8r.mobile_ui.UiThread
 import dagger.Binds
@@ -15,4 +16,7 @@ abstract class UiModule {
 
     @ContributesAndroidInjector
     abstract fun contributesBrowseActivity(): BrowseActivity
+
+    @ContributesAndroidInjector
+    abstract fun contributesBookmarkedActivity(): BookmarkedActivity
 }

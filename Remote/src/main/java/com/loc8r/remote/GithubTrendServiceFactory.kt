@@ -1,10 +1,12 @@
 package com.loc8r.remote
 
+import com.google.gson.Gson
 import com.loc8r.remote.interfaces.GithubTrendService
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
 import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
+import retrofit2.converter.gson.GsonConverterFactory
 import java.util.concurrent.TimeUnit
 
 object GithubTrendServiceFactory {
@@ -31,12 +33,13 @@ object GithubTrendServiceFactory {
     }
 
     // A private function that returns the Github service instance
-    private fun makeGithubTrendService(okHttpClient: OkHttpClient)
+    private fun makeGithubTrendService(okHttpClient: OkHttpClient, gson: Gson)
             : GithubTrendService{
         val retrofit = Retrofit.Builder()
                 .baseUrl("https://api.github.com")
                 .client(okHttpClient)
                 .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
+                .addConverterFactory(GsonConverterFactory.create(gson))
                 .build()
         return retrofit.create(GithubTrendService::class.java)
     }
@@ -45,6 +48,6 @@ object GithubTrendServiceFactory {
     open fun makeGithubTrendService(isDebug: Boolean): GithubTrendService {
         val okHttpClient = makeOkHttpClient(
                 makeLoggingInterceptor(isDebug))
-        return makeGithubTrendService(okHttpClient)
+        return makeGithubTrendService(okHttpClient, Gson())
     }
 }

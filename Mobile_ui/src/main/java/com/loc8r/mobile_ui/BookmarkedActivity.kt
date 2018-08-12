@@ -7,6 +7,7 @@ import android.content.Intent
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import android.support.v7.widget.LinearLayoutManager
+import android.view.MenuItem
 import android.view.View
 import com.loc8r.mobile_ui.adapters.BookmarkedAdapter
 import com.loc8r.mobile_ui.di.ViewModelFactory
@@ -52,6 +53,9 @@ class BookmarkedActivity: AppCompatActivity() {
 
         // initialize the RecyclerView (in it's own separate function
         setupBrowseRecycler()
+
+        //Add an up icon to return to Browsing all Projects
+        supportActionBar?.setDisplayHomeAsUpEnabled(true)
     }
 
     override fun onStart() {
@@ -69,6 +73,18 @@ class BookmarkedActivity: AppCompatActivity() {
         // This tells the presentation layer to inject the bookmarked projects list into the LiveData
         // observable, so we can actually get project data
         browseViewModel.fetchProjects()
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        return when (item.itemId) {
+            R.id.home -> {
+                finish()
+                true
+            }
+            else -> {
+                super.onOptionsItemSelected(item)
+            }
+        }
     }
 
     private fun setupBrowseRecycler(){
