@@ -3,6 +3,12 @@ apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-kapt'
 apply plugin: 'kotlin-android-extensions'
 
+configurations.all{
+    resolutionStrategy {
+        force 'com.android.support:support-annotations:27.1.1'
+    }
+}
+
 android {
     def globalConfiguration = rootProject.extensions.getByName("ext")
 
@@ -29,7 +35,6 @@ android {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
     }
-
 }
 
 dependencies {
