@@ -19,13 +19,17 @@ class TestApplication: Application(), HasActivityInjector {
      */
     companion object {
         fun appComponent(): TestApplicationComponent {
-            return (InstrumentationRegistry.getTargetContext().applicationContext as TestApplication).appComponent
+            return (InstrumentationRegistry.getTargetContext().applicationContext
+                    as TestApplication).appComponent
         }
     }
 
     override fun onCreate() {
         super.onCreate()
-        appComponent = DaggerTestApplicationComponent.builder().application(this).build
+        appComponent = DaggerTestApplicationComponent
+                .builder()
+                .application(this)
+                .build()
         appComponent.inject(this)
     }
 

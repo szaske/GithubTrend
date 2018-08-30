@@ -24,6 +24,14 @@ allprojects {
         jcenter()
     }
 
+    // Gives the ability to send Gradle command line
+    // parameters
+    gradle.projectsEvaluated {
+        tasks.withType(JavaCompile) {
+            options.compilerArgs << "-Xlint:unchecked"
+        }
+    }
+
     // required because of what I believe is support-annotation
     // requirements in the Mobile_UI module.
     // if I want to upgrade to Glide 4.7.1 as it has a dependency on

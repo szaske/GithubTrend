@@ -31,7 +31,7 @@ import javax.inject.Singleton
  *
  * I'll need to mock applications, cache and Data so I add the TestApplicationModule,
  * TestCacheModuule, TestRemote and TestDataModule's.  I don't need to mock anything in the Presentation and
- * UiModules so no need to create Test versions of them
+ * UiModules so no need to create Test versions of them.
  */
 @Singleton
 @Component(modules = arrayOf(AndroidInjectionModule::class,
