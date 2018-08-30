@@ -17,6 +17,7 @@ import com.nhaarman.mockito_kotlin.any
 import com.nhaarman.mockito_kotlin.mock
 import com.nhaarman.mockito_kotlin.whenever
 import io.reactivex.Completable
+import io.reactivex.Flowable
 import io.reactivex.Observable
 import io.reactivex.Single
 import org.junit.Before
@@ -64,15 +65,24 @@ class ProjectsDataRepositoryTest {
     }
 
     // because we're mocking the store we need to stub the response,
-    // which will be the observable we pass into the stub
-    private fun stubGetProjects(observable: Observable<List<ProjectEntity>>){
+    // which will be the flowable we pass into the stub
+    // This
+//    private fun stubGetProjects(observable: Observable<List<ProjectEntity>>){
+//        whenever(store.getProjects())
+//                .thenReturn(observable)
+//    }
+    private fun stubGetProjects(flowable: Flowable<List<ProjectEntity>>){
         whenever(store.getProjects())
-                .thenReturn(observable)
+                .thenReturn(flowable)
     }
 
-    private fun stubGetBookmarkedProjects(observable: Observable<List<ProjectEntity>>){
+//    private fun stubGetBookmarkedProjects(observable: Observable<List<ProjectEntity>>){
+//        whenever(store.getBookmarkedProjects())
+//                .thenReturn(observable)
+//    }
+    private fun stubGetBookmarkedProjects(flowable: Flowable<List<ProjectEntity>>){
         whenever(store.getBookmarkedProjects())
-                .thenReturn(observable)
+                .thenReturn(flowable)
     }
 
     private fun stubSaveProjects(completable: Completable) {
@@ -139,7 +149,8 @@ class ProjectsDataRepositoryTest {
         // Setup function takes care of #1, #2, #3, #5
 
         // this preps #4 above
-        stubGetProjects(Observable.just(listOf(ProjectFactory.makeProjectEntity())))
+        // stubGetProjects(Observable.just(listOf(ProjectFactory.makeProjectEntity())))
+        stubGetProjects(Flowable.just(listOf(ProjectFactory.makeProjectEntity())))
 
         // Stub our mapper to return a project #7
         stubMapper(ProjectFactory.makeProject(), any())
@@ -156,7 +167,7 @@ class ProjectsDataRepositoryTest {
         val project = ProjectFactory.makeProject()
 
         // preps the store to return an observable of one list of one entity
-        stubGetProjects(Observable.just(listOf(projectEntity)))
+        stubGetProjects(Flowable.just(listOf(projectEntity)))
 
         // preps the mapper to return a project when asked to convert an entity
         stubMapper(project,projectEntity)
@@ -170,7 +181,7 @@ class ProjectsDataRepositoryTest {
         // Setup function takes care of #1, #2, #3, #5
 
         // this preps #4 above
-        stubGetBookmarkedProjects(Observable.just(listOf(ProjectFactory.makeProjectEntity())))
+        stubGetBookmarkedProjects(Flowable.just(listOf(ProjectFactory.makeProjectEntity())))
 
         // Stub our mapper to return a project #7
         stubMapper(ProjectFactory.makeProject(), any())
@@ -187,7 +198,7 @@ class ProjectsDataRepositoryTest {
         val project = ProjectFactory.makeProject()
 
         // preps the store to return an observable of one list of one entity
-        stubGetBookmarkedProjects(Observable.just(listOf(projectEntity)))
+        stubGetBookmarkedProjects(Flowable.just(listOf(projectEntity)))
 
         // preps the mapper to return a project when asked to convert an entity
         stubMapper(project,projectEntity)

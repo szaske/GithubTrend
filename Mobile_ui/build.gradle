@@ -76,7 +76,7 @@ dependencies {
     annotationProcessor mobileUiDependencies.archCompiler
 
     // Test Dependencies
-    kaptTest mobileUiDependencies.daggerCompiler
+    kaptAndroidTest mobileUiDependencies.daggerCompiler
     testImplementation mobileUiTestDependencies.kotlinJUnit
 
     // Instrumentation Test Dependencies

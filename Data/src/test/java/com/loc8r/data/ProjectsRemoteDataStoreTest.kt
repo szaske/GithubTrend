@@ -4,6 +4,7 @@ import com.loc8r.data.interfaces.ProjectsRemote
 import com.loc8r.data.models.ProjectEntity
 import com.nhaarman.mockito_kotlin.mock
 import com.nhaarman.mockito_kotlin.whenever
+import io.reactivex.Flowable
 import io.reactivex.Observable
 import org.junit.Test
 import utils.DataFactory
@@ -16,14 +17,14 @@ class ProjectsRemoteDataStoreTest {
     // Stub Methods
     //
 
-    private fun stubRemoteGetProjects(observable: Observable<List<ProjectEntity>>){
+    private fun stubRemoteGetProjects(flowable: Flowable<List<ProjectEntity>>){
         whenever(remote.getProjects())
-                .thenReturn(observable)
+                .thenReturn(flowable)
     }
 
     @Test
     fun GetProjectsCompletes(){
-        stubRemoteGetProjects(Observable.just(listOf(ProjectFactory.makeProjectEntity())))
+        stubRemoteGetProjects(Flowable.just(listOf(ProjectFactory.makeProjectEntity())))
         val testObserver = store.getProjects().test()
         testObserver.assertComplete()
     }
@@ -31,7 +32,7 @@ class ProjectsRemoteDataStoreTest {
     @Test
     fun GetProjectsReturnsCorrectData(){
         val response = listOf(ProjectFactory.makeProjectEntity())
-        stubRemoteGetProjects(Observable.just(response))
+        stubRemoteGetProjects(Flowable.just(response))
         val testObserver = store.getProjects().test()
         testObserver.assertValue(response)
     }
