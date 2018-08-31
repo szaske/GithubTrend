@@ -9,6 +9,7 @@
 package com.loc8r.mobile_ui.di
 
 import android.app.Application
+import com.loc8r.domain.interfaces.ProjectsRepository
 import com.loc8r.mobile_ui.di.module.*
 import dagger.BindsInstance
 import dagger.Component
@@ -56,5 +57,7 @@ interface TestApplicationComponent {
     }
 
     fun inject(application: TestApplication)
+
+    fun projectsRepository(): ProjectsRepository
 
 }

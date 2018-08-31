@@ -1,14 +1,10 @@
 package com.loc8r.mobile_ui.di
 
-import android.app.Application
-import com.loc8r.cache.ProjectsCacheImpl
-import com.loc8r.cache.ProjectsDatabase
-import com.loc8r.data.interfaces.ProjectsCache
 import com.loc8r.domain.interfaces.ProjectsRepository
 import com.nhaarman.mockito_kotlin.mock
-import dagger.Binds
 import dagger.Module
 import dagger.Provides
+import javax.inject.Singleton
 
 @Module
 object TestDataModule {
@@ -19,6 +15,7 @@ object TestDataModule {
      */
     @Provides
     @JvmStatic
+    @Singleton
     fun provideDataRepository(): ProjectsRepository{
         return mock()
     }

@@ -18,9 +18,10 @@ class TestRunner: AndroidJUnitRunner() {
     override fun onCreate(arguments: Bundle?) {
         super.onCreate(arguments)
         // The Trampoline scheduler tells our test cases to run in order
-        RxJavaPlugins.setInitIoSchedulerHandler { Schedulers.trampoline() }
+        RxJavaPlugins.setIoSchedulerHandler { Schedulers.trampoline() }
     }
 
+    @Throws(InstantiationException::class, IllegalAccessException::class, ClassNotFoundException::class)
     override fun newApplication(cl: ClassLoader, className: String, context: Context)
             : Application {
         return super.newApplication(cl, TestApplication::class.java.name, context)

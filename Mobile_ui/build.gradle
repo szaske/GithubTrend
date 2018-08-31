@@ -21,6 +21,7 @@ android {
     defaultConfig {
         minSdkVersion globalConfiguration["androidMinSdkVersion"]
         targetSdkVersion globalConfiguration["androidTargetSdkVersion"]
+        // This assures that we use our custom TestRunner
         testInstrumentationRunner "com.loc8r.mobile_ui.TestRunner"
     }
 
