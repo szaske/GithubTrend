@@ -53,7 +53,6 @@ class BrowseBookmarkedProjectsViewModel @Inject constructor(
          * The [Observable] will not call this method if it calls [.onError].
          */
         override fun onComplete() {
-            TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
         }
 
         /**
